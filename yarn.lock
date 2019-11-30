@@ -5134,7 +5134,7 @@ react-custom-scrollbars@^4.2.1:
     prop-types "^15.5.10"
     raf "^3.1.0"
 
-"react-dom@^0.14.0 || ^15.0.0 || ^16.0.0":
+react-dom@^16.8.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"
   dependencies:
@@ -5219,7 +5219,7 @@ react-use-websocket@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-use-websocket/-/react-use-websocket-1.0.1.tgz#a836c37741c64aac2bf1b7061f26bc0e59982af9"
 
-"react@^0.14.0 || ^15.0.0 || ^16.0.0":
+react@^16.8.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
   dependencies:
