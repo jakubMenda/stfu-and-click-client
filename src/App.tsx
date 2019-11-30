@@ -23,7 +23,7 @@ const App = () => {
                 <Layout>
                   <Route path={routes.ROOT} component={() => <Redirect to={routes.BOARD} />} exact />
                   <Route path={routes.BOARD} component={lazy(() => import('components/Board'))} exact />
-                  <Route path={routes.GAME} component={lazy(() => import('components/Game'))} exact />
+                  <Route path={`${routes.GAME}/:teamName`} component={lazy(() => import('components/Game'))} exact />
                 </Layout>
               </Router>
             </Authentication>

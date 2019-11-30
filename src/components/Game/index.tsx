@@ -3,11 +3,13 @@ import Loader from 'components/Loader'
 import ScoreList from 'components/ScoreList'
 import routes from 'constants/routes'
 import useGameSubscription from 'hooks/useSubscription'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { RouteComponentProps } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 import { ReadyStateEnum } from 'react-use-websocket/dist/lib/use-websocket'
 import { Redux } from '../../@types'
+import { saveTeam } from '../../store/modules/auth/actions'
 import { selectSession, selectTeam } from '../../store/modules/auth/selectors'
 import { saveTeamScores, setTeamScoresError } from '../../store/modules/game/actions'
 import { selectTeamScores, selectTeamScoresError } from '../../store/modules/game/selectors'
@@ -23,12 +25,20 @@ interface StateProps {
 interface DispatchProps {
   saveTeamScores: typeof saveTeamScores
   setTeamScoresError: typeof setTeamScoresError
+  saveTeam: typeof saveTeam
 }
 
-interface Props extends StateProps, DispatchProps {}
+interface Props extends StateProps, DispatchProps, RouteComponentProps<{ teamName: string }> {}
 
-const Game = ({ teamScores, saveTeamScores, error, setTeamScoresError, team, session }: Props) => {
+const Game = ({ teamScores, saveTeamScores, error, setTeamScoresError, team, session, match, saveTeam }: Props) => {
   const { handleClick, connectionState } = useGameSubscription({ session, team }, saveTeamScores, setTeamScoresError)
+  const teamNameFromUrl = match.params.teamName
+
+  useEffect(() => {
+    if (teamNameFromUrl && team !== teamNameFromUrl) {
+      saveTeam(decodeURIComponent(teamNameFromUrl))
+    }
+  }, [teamNameFromUrl])
 
   const renderError = (message: string) => (
     <MessageWrapper>
@@ -41,7 +51,7 @@ const Game = ({ teamScores, saveTeamScores, error, setTeamScoresError, team, ses
     </MessageWrapper>
   )
 
-  if (!team) {
+  if (!team && !teamNameFromUrl) {
     return <Redirect to={routes.ROOT} />
   }
 
@@ -84,4 +94,4 @@ const mapStateToProps = (state: Redux) => ({
   team: selectTeam(state),
 })
 
-export default connect(mapStateToProps, { saveTeamScores, setTeamScoresError })(Game)
+export default connect(mapStateToProps, { saveTeamScores, setTeamScoresError, saveTeam })(Game)

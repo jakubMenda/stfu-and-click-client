@@ -29,7 +29,7 @@ const Board = ({ session, teamName, saveTeamScores, setTeamScoresError, teamScor
   useGameSubscription({ session, team: teamName }, saveTeamScores, setTeamScoresError)
 
   if (teamName) {
-    return <Redirect to={routes.GAME} />
+    return <Redirect to={`${routes.GAME}/${encodeURIComponent(teamName)}`} />
   }
 
   return (
