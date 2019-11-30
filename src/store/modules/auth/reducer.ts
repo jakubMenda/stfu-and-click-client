@@ -19,7 +19,7 @@ export default createReducer(initialState, {
   },
   [actions.Types.SAVE_TEAM]: (state: AuthReducer, action: ReturnType<typeof actions.saveTeam>): AuthReducer => ({
     ...state,
-    team: action.payload.team,
+    team: (action.payload.team || '').trim(),
   }),
   [actions.Types.RESET_TEAM]: (state: AuthReducer): AuthReducer => ({
     ...state,
