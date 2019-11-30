@@ -7,6 +7,7 @@ export interface GameReducer {
 }
 
 export interface TeamScore {
+  _id: string
   name: string
   members: Member[]
 }

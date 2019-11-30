@@ -8,18 +8,7 @@ interface PlayerData {
   session: string
 }
 
-export enum ConnectionStatus {
-  CONNECTING = 0,
-  OPEN,
-  CLOSING,
-  CLOSED,
-}
-
-const useGameSubscription = (
-  playerData: PlayerData,
-  setScore: (score: TeamScoreWithTotal[]) => void,
-  setError: (error: Error) => void,
-) => {
+const useGameSubscription = (playerData: PlayerData, setScore: (score: TeamScoreWithTotal[]) => void, setError: (error: Error) => void) => {
   const { session, team } = playerData
   const [sendMessage, lastMessage, readyState] = useWebSocket(process.env.WS_URI)
 
@@ -27,10 +16,9 @@ const useGameSubscription = (
     try {
       const requestData = parseDataToMessage({ team, clicks, session })
       sendMessage(requestData)
-    } catch(e) {
+    } catch (e) {
       setError(e)
     }
-
   }
 
   useEffect(() => {
@@ -39,7 +27,7 @@ const useGameSubscription = (
         const score = parseMessageToTeamScore(lastMessage.data)
         setScore(score)
       }
-    } catch(e) {
+    } catch (e) {
       setError(e)
     }
   }, [lastMessage])

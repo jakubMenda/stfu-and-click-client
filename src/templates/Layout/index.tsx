@@ -7,7 +7,7 @@ interface Props {}
 const Layout = ({ children }: PropsWithChildren<Props>) => {
   return (
     <Wrapper>
-      <AppBar/>
+      <AppBar />
       <Content>{children}</Content>
     </Wrapper>
   )

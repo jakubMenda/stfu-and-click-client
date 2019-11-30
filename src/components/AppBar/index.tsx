@@ -21,12 +21,12 @@ const AppBar = ({ teamName, resetTeam }: Props) => {
   return (
     <MUIAppBar position="static">
       <StyledToolbar>
-        <Typography variant="h6">
-          STFU and CLICK!
-        </Typography>
-        {teamName && <Button onClick={resetTeam} color="inherit" startIcon={<TeamIcon />}>
-          Switch team
-        </Button>}
+        <Typography variant="h6">STFU and CLICK!</Typography>
+        {teamName && (
+          <Button onClick={resetTeam} color="inherit" startIcon={<TeamIcon />}>
+            Switch team
+          </Button>
+        )}
       </StyledToolbar>
     </MUIAppBar>
   )

@@ -2,6 +2,7 @@ import { createGlobalStyle, DefaultTheme } from 'styled-components'
 
 const theme: DefaultTheme = {
   colors: {
+    primary: '#3F51B5',
     background: '#efefef',
   },
 }

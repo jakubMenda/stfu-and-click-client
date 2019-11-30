@@ -1,4 +1,5 @@
 import Authentication from 'components/Authentication'
+import Loader, { LoaderType } from 'components/Loader'
 import GlobalTheme, { GlobalStyle } from 'constants/GlobalTheme'
 import routes from 'constants/routes'
 import React, { lazy, Suspense } from 'react'
@@ -14,8 +15,8 @@ const App = () => {
   return (
     <ThemeProvider theme={GlobalTheme}>
       <Provider store={store}>
-        <PersistGate loading={'loading...'} persistor={persistor}>
-          <Suspense fallback={<div>loading...</div>}>
+        <PersistGate loading={<Loader type={LoaderType.OVERLAY} />} persistor={persistor}>
+          <Suspense fallback={<Loader type={LoaderType.OVERLAY} />}>
             <GlobalStyle />
             <Authentication>
               <Router>
