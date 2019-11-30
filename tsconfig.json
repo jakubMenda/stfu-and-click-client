@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es5",
+    "rootDir": "src",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": false,
+    "incremental": true,
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    "noUnusedLocals": true,
+    "module": "esNext",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "downlevelIteration": true,
+    "jsx": "react",
+    "types": ["react", "node"],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["dom", "es5", "es6", "es7", "es2017.object"],
+    "baseUrl": "./src",
+    "paths": {
+      "assets/*": ["assets/*"],
+      "components/*": ["components/*"],
+      "constants/*": ["constants/*"],
+      "hooks/*": ["hooks/*"],
+      "store": ["store/*"],
+      "utils/*": ["utils/*"]
+    },
+    "resolveJsonModule": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
+}
