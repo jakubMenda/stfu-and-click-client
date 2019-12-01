@@ -16,7 +16,7 @@ interface Props extends StateProps {}
 
 const UserClicksCounter = ({ team, score, session }: Props) => {
   const selectedTeamsScore = (score || []).find(teamScore => teamScore.name === team)
-  const usersScore = (selectedTeamsScore.members || []).find(member => member.session === session)
+  const usersScore = (_get(selectedTeamsScore, 'members') || []).find(member => member.session === session)
 
   return <ClicksCounter clicks={_get(usersScore, 'clicks')} text="Your clicks:" />
 }
