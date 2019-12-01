@@ -11,11 +11,13 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
   max-width: 1000px;
-  height: 80vh;
-  top: calc(10vh - 64px);
-  position: relative;
+  position: absolute;
+  top: calc(64px + 10px);
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
   background: #fff;
   padding: 20px;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
