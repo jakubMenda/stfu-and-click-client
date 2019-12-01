@@ -13,13 +13,10 @@ export const Content = styled.div`
   margin: 0 auto;
   width: 80%;
   max-width: 1000px;
-  height: 70vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 80vh;
+  top: calc(10vh - 64px);
+  position: relative;
   background: #fff;
   padding: 20px;
-  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
 `

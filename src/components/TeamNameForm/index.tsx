@@ -43,7 +43,7 @@ const TeamNameForm = ({ saveTeam }: Props) => {
         helperText={errors[0]}
       />
       <Button variant="contained" color="primary" type="submit">
-        Click
+        Go
       </Button>
     </Form>
   )

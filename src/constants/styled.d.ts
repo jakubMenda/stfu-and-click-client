@@ -5,6 +5,12 @@ declare module 'styled-components' {
     colors: {
       primary: string
       background: string
+      lightText: string
+    }
+    resolution: {
+      height: {
+        md: number
+      }
     }
   }
 }

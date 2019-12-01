@@ -4,6 +4,12 @@ const theme: DefaultTheme = {
   colors: {
     primary: '#3F51B5',
     background: '#efefef',
+    lightText: '#dddddd',
+  },
+  resolution: {
+    height: {
+      md: 600,
+    },
   },
 }
 

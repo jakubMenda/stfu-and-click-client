@@ -7,6 +7,7 @@ import Scrollbars from 'react-custom-scrollbars'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Redux } from '../../@types'
+import Footer from '../../Footer'
 import { selectSession, selectTeam } from '../../store/modules/auth/selectors'
 import { saveTeamScores, setTeamScoresError } from '../../store/modules/game/actions'
 import { selectTeamScores } from '../../store/modules/game/selectors'
@@ -45,6 +46,7 @@ const Board = ({ session, teamName, saveTeamScores, setTeamScoresError, teamScor
         <ListWrapper>
           <Scrollbars hideTracksWhenNotNeeded universal>
             <ScoreList score={teamScores} />
+            <Footer />
           </Scrollbars>
         </ListWrapper>
       )}
