@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Redux } from '../../@types'
 import Footer from '../../Footer'
+import { saveTeam } from '../../store/modules/auth/actions'
 import { selectSession, selectTeam } from '../../store/modules/auth/selectors'
 import { saveTeamScores, setTeamScoresError } from '../../store/modules/game/actions'
 import { selectTeamScores } from '../../store/modules/game/selectors'
@@ -22,12 +23,17 @@ interface StateProps {
 interface DispatchProps {
   saveTeamScores: typeof saveTeamScores
   setTeamScoresError: typeof setTeamScoresError
+  saveTeam: typeof saveTeam
 }
 
 interface Props extends StateProps, DispatchProps {}
 
-const Board = ({ session, teamName, saveTeamScores, setTeamScoresError, teamScores }: Props) => {
+const Board = ({ session, teamName, saveTeamScores, setTeamScoresError, teamScores, saveTeam }: Props) => {
   useGameSubscription({ session, team: teamName }, saveTeamScores, setTeamScoresError)
+
+  const handleTeamClick = (teamName: string) => {
+    saveTeam(teamName)
+  }
 
   if (teamName) {
     return <Redirect to={`${routes.GAME}/${encodeURIComponent(teamName)}`} />
@@ -45,7 +51,7 @@ const Board = ({ session, teamName, saveTeamScores, setTeamScoresError, teamScor
       {teamScores && (
         <ListWrapper>
           <Scrollbars hideTracksWhenNotNeeded universal>
-            <ScoreList score={teamScores} />
+            <ScoreList score={teamScores} onItemClick={handleTeamClick} />
             <Footer />
           </Scrollbars>
         </ListWrapper>
@@ -60,4 +66,4 @@ const mapStateToProps = (state: Redux) => ({
   teamScores: selectTeamScores(state),
 })
 
-export default connect(mapStateToProps, { saveTeamScores, setTeamScoresError })(Board)
+export default connect(mapStateToProps, { saveTeamScores, setTeamScoresError, saveTeam })(Board)

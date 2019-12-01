@@ -9,6 +9,7 @@ import { Cell, Head, Row, Wrapper } from './styled'
 
 interface ComponentProps {
   score: TeamScoreWithTotal[]
+  onItemClick?: (teamName: string) => void
 }
 
 interface StateProps {
@@ -17,7 +18,7 @@ interface StateProps {
 
 interface Props extends ComponentProps, StateProps {}
 
-const ScoreList = ({ score, team }: Props) => {
+const ScoreList = ({ score, team, onItemClick }: Props) => {
   const [sortedScore, setSortedScore] = useState(sortScore(score))
 
   useEffect(() => {
@@ -36,7 +37,14 @@ const ScoreList = ({ score, team }: Props) => {
       </Head>
       <FlipMove>
         {sortedScore.map(({ _id, name, total }) => (
-          <Row isHighlighted={name === team} key={_id}>
+          <Row
+            clickable={!!onItemClick}
+            onClick={() => {
+              onItemClick && onItemClick(name)
+            }}
+            isHighlighted={name === team}
+            key={_id}
+          >
             <Cell>{name}</Cell>
             <Cell>{total}</Cell>
           </Row>
